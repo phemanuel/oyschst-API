@@ -6,25 +6,35 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AcceptanceFee;
 use App\Models\StudentAdmission;
+use Illuminate\Support\Facades\DB; 
 
 class StudentController extends Controller
 {
     //
     public function index()
     {
-        $allAcceptance = AcceptanceFee::all();
+        $allAcceptance = DB::table('acceptance')
+            ->join('application', 'acceptance.matricno', '=', 'application.applicationno')
+            ->select(
+                'acceptance.matricno',
+                'acceptance.fullname',
+                'application.programme as Gender' ,
+                'application.emailaddy',
+                'acceptance.course',
+                'acceptance.level',
+                'acceptance.state',
+                'application.lga',
+                'application.dob',
+                'application.mobileno as mobileno',
+                'application.address',                
+                'acceptance.session1',
+            )
+            ->get();
 
-        if($allAcceptance){
-            return response()->json([
+        return response()->json([
             'data' => $allAcceptance,
-        ]);
-        } 
-        else{
-            return response()->json([
-                'status' => 'No data available',
-            ]);
-        }
-    }    
+        ], 200, [], JSON_UNESCAPED_SLASHES);
+    }
 
     public function getStudentsByAcceptance($admission_year)
     {
@@ -32,27 +42,61 @@ class StudentController extends Controller
         $next_year = $admission_year + 1;
 
         // Create the academic session string
-        $studentSession = "{$admission_year}/{$next_year}";        
-        
-        // Query the database for students with the academic session
-        $students = AcceptanceFee::where('session1', $studentSession)->get();
+        $studentSession = "{$admission_year}/{$next_year}";
+
+        // Select specific columns from Acceptance and Application tables
+        $students = DB::table('acceptance')
+            ->join('application', 'acceptance.matricno', '=', 'application.applicationno')
+            ->where('acceptance.session1', $studentSession)
+            ->select(
+                'acceptance.matricno',
+                'acceptance.fullname',
+                'application.programme as Gender' ,
+                'application.emailaddy',
+                'acceptance.course',
+                'acceptance.level',
+                'acceptance.state',
+                'application.lga',
+                'application.dob',
+                'application.mobileno as mobileno',
+                'application.address',                
+                'acceptance.session1',
+            )
+            ->get();
 
         // Return the result
         if ($students->isNotEmpty()) {
             return response()->json([
                 'data' => $students,
-            ]);
+            ], 200, [], JSON_UNESCAPED_SLASHES);
         } else {
             return response()->json([
                 'status' => 'No data available',
             ]);
         }
-    }  
+    } 
     
     public function getStudentsByStudentNo($student_no)
     {        
         // Query the database for students with the student_no 
-        $students = AcceptanceFee::where('matricno', $student_no)->get();
+        $students = DB::table('acceptance')
+            ->join('application', 'acceptance.matricno', '=', 'application.applicationno')
+            ->where('acceptance.matricno', $student_no)
+            ->select(
+                'acceptance.matricno',
+                'acceptance.fullname',
+                'application.programme as Gender' ,
+                'application.emailaddy',
+                'acceptance.course',
+                'acceptance.level',
+                'acceptance.state',
+                'application.lga',
+                'application.dob',
+                'application.mobileno as mobileno',
+                'application.address',                
+                'acceptance.session1',
+            )
+            ->get();
 
         // Return the result
         if ($students->isNotEmpty()) {

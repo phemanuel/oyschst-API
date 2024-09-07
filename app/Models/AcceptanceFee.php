@@ -12,26 +12,30 @@ class AcceptanceFee extends Model
     protected $table = 'acceptance';
     public $timestamps = false;
     
-    protected $fillable = [
-        'state',
+    protected $fillable = [ 
+        'matricno',       
+        'fullname',        
         'gender',
-        'fullname',
-        'matricno',
         'emailaddy',
-        'mobileno',
-        'amounttopay',
+        'mobileno',        
+        'course',
+        'level',  
+        'state',              
+        'session1',        
+    ];
+
+    protected $hidden = [
+       'amounttopay',
         'amountpaid',
         'balance',
-        'course',
-        'level',
         'feetype',
         'bankname',
         'tellerno',
-        'session1',
         'paymentdate',
         'date1',
         'confirmby',
         'transno',
-        'paymode'
+        'paymode',
     ];
+    
 }
