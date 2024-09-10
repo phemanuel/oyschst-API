@@ -12,6 +12,14 @@ class StudentAdmission extends Model
     protected $table = 'application';
 
     protected $fillable = [
+        'applicationno',
+        'courseselect1',
+        'surname',
+        'firstname',
+        'othername',
+        'emailaddy',
+        'programme',
+        'academiclevel',
         'state',
         'lga',
         'dob',
