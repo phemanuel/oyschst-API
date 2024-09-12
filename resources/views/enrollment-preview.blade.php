@@ -146,7 +146,7 @@
                             <div class="input-group">                            
                                     <label class="label">Gender</label>
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                <p class="custom-text">{{$checkEnrollment->gender}}</p>
+                                <p class="custom-text">{{$checkEnrollment->sex}}</p>
                                 </div>
                             </div>
                         </div>
@@ -155,13 +155,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <p class="custom-text">{{$checkEnrollment->email_addy}}</p>
+                                    <p class="custom-text">{{$checkEnrollment->email1}}</p>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone No</label>
-                                    <p class="custom-text">{{$checkEnrollment->phone_no}}</p>
+                                    <p class="custom-text">{{$checkEnrollment->phone1}}</p>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Address</label>
-                                    <p class="custom-text">{{$checkEnrollment->address}}</p>
+                                    <p class="custom-text">{{$checkEnrollment->address1}}</p>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                                 <div class="input-group">                            
                                         <label class="label">State of Origin</label>
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                    <p class="custom-text">{{$checkEnrollment->state}}</p>
+                                    <p class="custom-text">{{$checkEnrollment->state_of_origin}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                                 <div class="input-group">                            
                                         <label class="label">State of Residence</label>
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                    <p class="custom-text">{{$checkEnrollment->state1}}</p>
+                                    <p class="custom-text">{{$checkEnrollment->state}}</p>
                                     </div>
                                 </div>
                             </div>

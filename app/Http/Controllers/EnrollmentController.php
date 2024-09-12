@@ -32,14 +32,20 @@ class EnrollmentController extends Controller
 
             $department = $studentData->courseselect1;
             $getFaculty = Faculty::where('deptname', '=', $department)->first();
-            $faculty = $getFaculty->dept;
-
-            return view('enrollment-step1', compact('studentData','faculty'));
+            if($getFaculty){
+                 $faculty = $getFaculty->dept;
+                 return view('enrollment-step1', compact('studentData','faculty'));
+            }
+            return view('redirect-page');
+            
         }
             $department = $checkEnrollment->department;
             $getFaculty = Faculty::where('deptname', '=', $department)->first();
-            $faculty = $getFaculty->dept;
-            return view('enrollment-step1-update', compact('checkEnrollment','faculty'));
+           if($getFaculty){
+                 $faculty = $getFaculty->dept;
+                 return view('enrollment-step1-update', compact('checkEnrollment','faculty'));
+            }
+            return view('redirect-page');
     }
 
     public function enrollmentStep1Save(Request $request)
@@ -86,16 +92,16 @@ class EnrollmentController extends Controller
             'nin_no' => $request->input('nin_no'),
             'surname' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
-            'other_name' => $request->input('other_name'),
+            'last_name' => $request->input('other_name'),
             'date_of_birth' => $request->input('date_of_birth'),
-            'gender' => $request->input('gender'),
-            'email_addy' => $request->input('email_addy'),
-            'phone_no' => $request->input('phone_no'),
+            'sex' => $request->input('gender'),
+            'email1' => $request->input('email_addy'),
+            'phone1' => $request->input('phone_no'),
             'marital_status' => $request->input('marital_status'),
-            'address' => $request->input('address'),
-            'state' => $request->input('state'),
+            'address1' => $request->input('address'),
+            'state_of_origin' => $request->input('state'),
             'city' => $request->input('city'),
-            'state1' => $request->input('state1'),
+            'state' => $request->input('state1'),
             'lga_oyo' => $request->input('lga_oyo'),
             'department' => $request->input('department'),
             'faculty' => $request->input('faculty'),
@@ -141,6 +147,7 @@ class EnrollmentController extends Controller
             'next_of_kin_city' => $validatedData['next_of_kin_city'],
             'next_of_kin_address1' => $validatedData['next_of_kin_address1'],
             'next_of_kin_gender' => $validatedData['next_of_kin_gender'],
+            'enrollment_status' => 1,
         ]);
 
         // Redirect back with a success message
@@ -182,14 +189,14 @@ class EnrollmentController extends Controller
             'surname' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
             'date_of_birth' => $request->input('date_of_birth'),
-            'gender' => $request->input('gender'),
-            'email_addy' => $request->input('email_addy'),
-            'phone_no' => $request->input('phone_no'),
+            'sex' => $request->input('gender'),
+            'email1' => $request->input('email_addy'),
+            'phone1' => $request->input('phone_no'),
             'marital_status' => $request->input('marital_status'),
-            'address' => $request->input('address'),
-            'state' => $request->input('state'),
+            'address1' => $request->input('address'),
+            'state_of_origin' => $request->input('state'),
             'city' => $request->input('city'),
-            'state1' => $request->input('state1'),
+            'state' => $request->input('state1'),
             'lga_oyo' => $request->input('lga_oyo'),
             'department' => $request->input('department'),
             'faculty' => $request->input('faculty'),
@@ -231,6 +238,7 @@ class EnrollmentController extends Controller
             'next_of_kin_city' => $validatedData['next_of_kin_city'],
             'next_of_kin_address1' => $validatedData['next_of_kin_address1'],
             'next_of_kin_gender' => $validatedData['next_of_kin_gender'],
+            'enrollment_status' => 1,
         ]);
 
         // Redirect back with a success message

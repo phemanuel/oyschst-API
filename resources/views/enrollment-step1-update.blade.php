@@ -78,6 +78,7 @@
                                 <div class="input-group">                                    
                                     <p><img src="https://oyschst.edu.ng/epayment/registration/uploads/{{ $checkEnrollment->application_no }}.jpg" width="100" height="100" alt="profile_picture">
                                     </p>
+                                     <p style="color: red;">If your picture is not displaying, visit the ICT immediately with a passport photograph.</p>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -152,11 +153,11 @@
                                     <label class="label">Gender<span style="color: red;">*</span></label>
                                 <div class="rs-select2 js-select-simple select--no-search">
                                     <select name="gender" id="">
-                                        @if(empty($checkEnrollment->gender))                                        
+                                        @if(empty($checkEnrollment->sex))                                        
                                         <option selected value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         @else
-                                        <option selected value="{{$checkEnrollment->gender}}">{{$checkEnrollment->gender}}</option>
+                                        <option selected value="{{$checkEnrollment->sex}}">{{$checkEnrollment->sex}}</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         @endif
@@ -170,13 +171,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email<span style="color: red;">*</span></label>
-                                    <input class="input--style-4" type="email" name="email_addy" value="{{$checkEnrollment->email_addy}}">
+                                    <input class="input--style-4" type="email" name="email_addy" value="{{$checkEnrollment->email1}}">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone No<span style="color: red;">*</span></label>
-                                    <input class="input--style-4" type="text" name="phone_no" value="{{$checkEnrollment->phone_no}}">
+                                    <input class="input--style-4" type="text" name="phone_no" value="{{$checkEnrollment->phone1}}">
                                 </div>
                             </div>
                         </div>
@@ -202,7 +203,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Address<span style="color: red;">*</span></label>
-                                    <textarea class="input--style-4" name="address" id="">{{$checkEnrollment->address}}</textarea>
+                                    <textarea class="input--style-4" name="address" id="">{{$checkEnrollment->address1}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +213,7 @@
                                         <label class="label">State of Origin<span style="color: red;">*</span></label>
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="state" id="">
-                                            @if(empty($checkEnrollment->state))
+                                            @if(empty($checkEnrollment->state_of_origin))
                                             <option value="ABIA">ABIA</option>
 <option value="ADAMAWA">ADAMAWA</option>
 <option value="AKWAIBOM">AKWAIBOM</option>
@@ -252,7 +253,7 @@
 <option value="ABUJA">ABUJA</option>
 
                                             @else
-                                            <option value="{{$checkEnrollment->state}}">{{$checkEnrollment->state}}</option>
+                                            <option value="{{$checkEnrollment->state_of_origin}}">{{$checkEnrollment->state_of_origin}}</option>
                                             <option value="ABIA">ABIA</option>
 <option value="ADAMAWA">ADAMAWA</option>
 <option value="AKWAIBOM">AKWAIBOM</option>
@@ -319,7 +320,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">State of Residence(LGA)<span style="color: red;">*</span></label>
+                                    <label class="label">State of Residence(LGA)in OYO state.<span style="color: red;">*</span></label>
                                     <input class="input--style-4" type="text" name="lga_oyo" value="{{$checkEnrollment->lga_oyo}}">
                                 </div>
                             </div>

@@ -13,6 +13,8 @@ use App\Http\Controllers\EnrollmentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [EnrollmentController::class, 'home'])
+        ->name('home');
 
 Route::get('/enrollment/{id}', [EnrollmentController::class, 'enrollment'])
         ->name('enrollment');

@@ -77,6 +77,7 @@
                                 <div class="input-group">                                    
                                     <p><img src="https://oyschst.edu.ng/epayment/registration/uploads/{{ $studentData->applicationno }}.jpg" width="100" height="100" alt="profile_picture">
                                     </p>
+                                    <p>If your picture is not displaying, visit the ICT immediately.</p>
                                 </div>
                             </div>
                             <div class="col-2">
