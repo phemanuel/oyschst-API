@@ -21,7 +21,7 @@ class CheckApiToken
 
 
         $validUser = 'oyshia';
-        $validToken = 'gGNer23zTWseCkGmbLc05CmGY';
+        $validToken = 'your-api-token';
 
         if ($user !== $validUser || $token !== $validToken) {
             return response()->json(['error' => 'Unauthorized Access'], 401);
