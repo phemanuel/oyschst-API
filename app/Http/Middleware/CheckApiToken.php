@@ -20,7 +20,7 @@ class CheckApiToken
         $token = $request->header('X-Api-Token');
 
 
-        $validUser = 'oyshia';
+        $validUser = 'your-aoi-user';
         $validToken = 'your-api-token';
 
         if ($user !== $validUser || $token !== $validToken) {
